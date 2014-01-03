@@ -3,7 +3,8 @@ $(document).ready(function(e) {
 		updateLoggedIn();
 		$("#output").empty();
 		
-		Trello.cards.get("1mI9G5LR", function(card){
+		var card_id = '7BxmX3GG';
+		Trello.cards.get(card_id, function(card){
 			
 			console.log(card);
 			$("#output").text('card id:'+card.id);
