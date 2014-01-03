@@ -9,8 +9,6 @@ var onAuthorize = function() {
             .text("Loading Cards...")
             .appendTo("#output");
 
-        // Output a list of all of the cards that the member 
-        // is assigned to
         Trello.get("members/me/cards", function(cards) {
             $cards.empty();
             $.each(cards, function(ix, card) {
@@ -21,10 +19,7 @@ var onAuthorize = function() {
                 .appendTo($cards);
             });  
         });
-		
-		
     });
-
 };
 
 var updateLoggedIn = function() {

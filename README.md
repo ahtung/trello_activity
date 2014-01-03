@@ -2,6 +2,19 @@
 
 Bir trello boardunun tum cardlarinin tamamlama suresini hesaplar.
 
+## Teknik
+
+Proje [composer](http://getcomposer.org/) kullaniyor
+Testler icin [Behat](http://behat.org/) kullaniyor
+
+Dependancy install
+
+```
+curl http://getcomposer.org/installer | php 
+php composer.phar install --prefer-source
+```
+
+
 ## Algoritma
 
 ### Bir cardin tamamlanma suresi
