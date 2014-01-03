@@ -1,7 +1,6 @@
 # trello_activity
-===============
 
-Bir trello boardunun tum cardlarinin 
+Bir trello boardunun tum cardlarinin tamamlama suresini hesaplar.
 
 ## Algoritma
 
