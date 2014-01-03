@@ -3,12 +3,18 @@ $(document).ready(function(e) {
 		updateLoggedIn();
 		$("#output").empty();
 		
-		Trello.cards.get("9AvXrTfo", function(card){
+		Trello.cards.get("1mI9G5LR", function(card){
 			
 			console.log(card);
 			$("#output").text('card id:'+card.id);
 		});
 	
+		Trello.get("cards/1mI9G5LR/actions?type=updateCard", function(card){
+			console.log(card);
+			$.each(card,function(key,value){
+				$("#output").append("type : "+value.type+" => date:"+value.date+"<br>");
+			});
+		});
 	};
 	
 	var updateLoggedIn = function() {
@@ -31,7 +37,8 @@ $(document).ready(function(e) {
 		Trello.authorize({
 			type: "popup",
 			success: onAuthorize
-		})
+		});
+		console.log('connect link clicked');
 	});
 		
 	$("#disconnect").click(logout);
