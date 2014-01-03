@@ -1,9 +1,9 @@
 Feature: A card
-  In order to start using trello_activity
-  As a user or developer
-  I need to be able to access completion time of my cards
+  In order to demonstrate trello_activity
+  As a Trello member and developer
+  I need to be able to calculate the completion time of a card
 
-  Scenario: Fetch a users cards
-    Given that I have a signed in user
-    When I do something
-    Then I should see something
+  Scenario: Demonstrate card completion time
+    When I visit homepage
+     And I click on 'Connect To Trello'
+    Then I should see the correct completion time

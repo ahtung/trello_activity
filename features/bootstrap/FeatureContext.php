@@ -30,15 +30,27 @@ class FeatureContext extends BehatContext
         // Initialize your context here
     }
 
-//
-// Place your definition and hook methods here:
-//
-//    /**
-//     * @Given /^I have done something with "([^"]*)"$/
-//     */
-//    public function iHaveDoneSomethingWith($argument)
-//    {
-//        doSomethingWith($argument);
-//    }
-//
+    /**
+     * @When /^I visit homepage$/
+     */
+    public function iVisitHomepage()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^I click on \'([^\']*)\'$/
+     */
+    public function iClickOn($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^I should see the correct completion time$/
+     */
+    public function iShouldSeeTheCorrectCompletionTime()
+    {
+        throw new PendingException();
+    }
 }
