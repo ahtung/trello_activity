@@ -1,49 +1,45 @@
-var onAuthorize = function() {
-    updateLoggedIn();
-    $("#output").empty();
-    
-	Trello.members.get("me", function(member){
-        $("#fullName").text(member.fullName);
-    
-        var $cards = $("<div>")
-            .text("Loading Cards...")
-            .appendTo("#output");
-
-        Trello.get("members/me/cards", function(cards) {
-            $cards.empty();
-            $.each(cards, function(ix, card) {
-                $("<a>")
-                .attr({href: card.url, target: "trello"})
-                .addClass("card")
-                .text(card.name)
-                .appendTo($cards);
-            });  
-        });
-    });
-};
-
-var updateLoggedIn = function() {
-    var isLoggedIn = Trello.authorized();
-    $("#loggedout").toggle(!isLoggedIn);
-    $("#loggedin").toggle(isLoggedIn);        
-};
-    
-var logout = function() {
-    Trello.deauthorize();
-    updateLoggedIn();
-};
-                          
-Trello.authorize({
-    interactive:false,
-    success: onAuthorize
+$(document).ready(function(e) {
+    var onAuthorize = function() {
+		updateLoggedIn();
+		$("#output").empty();
+		
+		Trello.cards.get("1mI9G5LR", function(card){
+			
+			console.log(card);
+			$("#output").text('card id:'+card.id);
+		});
+	
+		Trello.get("cards/1mI9G5LR/actions/",{filter:'updateCard'}, function(actions){
+			console.log(actions);
+			$.each(actions,function(key,value){
+				$("#output").append("type : "+value.type+" => date: "+value.date+"<br>");
+			});
+		});
+	};
+	
+	var updateLoggedIn = function() {
+		var isLoggedIn = Trello.authorized();
+		$("#loggedout").toggle(!isLoggedIn);
+		$("#loggedin").toggle(isLoggedIn);        
+	};
+		
+	var logout = function() {
+		Trello.deauthorize();
+		updateLoggedIn();
+	};
+							  
+	Trello.authorize({
+		interactive:false,
+		success: onAuthorize
+	});
+	
+	$("#connectLink").click(function(){
+		Trello.authorize({
+			type: "popup",
+			success: onAuthorize
+		});
+		console.log('connect link clicked');
+	});
+		
+	$("#disconnect").click(logout);
 });
-
-$("#connectLink")
-.click(function(){
-    Trello.authorize({
-        type: "popup",
-        success: onAuthorize
-    })
-});
-    
-$("#disconnect").click(logout);
