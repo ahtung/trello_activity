@@ -2,22 +2,39 @@
 
 Bir trello boardunun tum cardlarinin tamamlama suresini hesaplar.
 
-## Teknik
-
 Proje [composer](http://getcomposer.org/) kullaniyor
 Testler icin [Behat](http://behat.org/) kullaniyor
 
-Dependancy install
+## Dependancies
 
+### Production
+- PHP53, PHP54 or PHP55
+```
+brew install PHP55  
+```
+
+### Test
+- Composer
+```
+brew install josegonzalez/php/composer
+```
+- Behat
 ```
 curl http://getcomposer.org/installer | php 
 php composer.phar install --prefer-source
 ```
 
+## Run
 
-## Algoritma
+Tests
+```
+bin/behat
+```
+
+## Details
 
 ### Bir cardin tamamlanma suresi
+
 - get card
 - get actions of card
 - find action where card moved from ToDo to Doing
@@ -59,7 +76,3 @@ action = {
 ```
 
 - get difference of time
-
-## Testler
-
-- ToDo
