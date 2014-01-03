@@ -4,18 +4,24 @@ $(document).ready(function(e) {
 		$("#output").empty();
 		
 		var card_id = '7BxmX3GG';
-		Trello.cards.get(card_id, function(card){
-			
-			console.log(card);
-			$("#output").text('card id:'+card.id);
-		});
 	
 		Trello.get("cards/"+ card_id +"/actions/",{filter:'updateCard'}, function(actions){
-			console.log(actions);
-			$.each(actions,function(key,value){
-				$("#output").append("type : "+value.type+" => date: "+value.date+"<br>");
+			
+			$.each(actions,function(key, action){	
+				
+				if(atChangedLists("To Do", "Doing")) {
+					$("#output").append("-> : "+ action.type + " => date: " + action.date + "<br>");
+				}
+				
+				if(atChangedLists("Doing", "Done")) {
+					$("#output").append("-> : "+ action.type + " => date: " + action.date + "<br>");
+				}
 			});
 		});
+	};
+	
+	var atChangedLists = function(fromList, toList) {
+		// TODO
 	};
 	
 	var updateLoggedIn = function() {
