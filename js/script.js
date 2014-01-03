@@ -9,21 +9,19 @@ $(document).ready(function(e) {
 	
 		Trello.get("cards/"+ card_id +"/actions/",{filter:'updateCard'}, function(actions){
 			var difference = 0;
-			$.each(actions,function(index, action){	
-				var start_time = atChangedLists(action,"To Do", "Doing");
-				var end_time = atChangedLists(action,"Doing", "Done");
-				if(start_time && end_time) {
-					difference = timeDifference(start_time, end_time);
-				}
-			});
+			var start_time = atChangedLists(actions, "To Do", "Doing");
+			var end_time = atChangedLists(actions, "Doing", "Done");
+			difference = timeDifference(start_time, end_time);
 			$("#output").append("Card " + card_id + " completed in " + difference + " seconds.<br>");
 		});
 	};
 	
-	var atChangedLists = function(action,fromList, toList) {
-		if(action.data.listBefore && action.data.listAfter && action.data.listBefore.name==fromList && action.data.listAfter.name==toList){
-			return action.date
-		}
+	var atChangedLists = function(actions,fromList, toList) {
+		$.each(actions,function(index, action){	
+			if(action.data.listBefore && action.data.listAfter && action.data.listBefore.name==fromList && action.data.listAfter.name==toList){
+				return action.date
+			}
+		});
 	};
 	
 	var timeDifference = function(fromTime, toTime){
