@@ -9,26 +9,32 @@ $(document).ready(function(e) {
 			
 			$.each(actions,function(index, action){	
 				if(atChangedLists(action,"To Do", "Doing")) {
-					$("#output").append("-> : "+ action.type + " => date: " + action.date + "<br>");
+					$("#output").append("Start Up date: " + action.date + "<br>");
 				}
 				
 				if(atChangedLists(action,"Doing", "Done")) {
-					$("#output").append("-> : "+ action.type + " => date: " + action.date + "<br>");
+					$("#output").append("Finish date: " + action.date + "<br>");
 				}
+				
 			});
 		});
 	};
 	
 	var atChangedLists = function(action,fromList, toList) {
 		
-		console.log(action);
 		if(action.data.listBefore && action.data.listAfter && action.data.listBefore.name==fromList && action.data.listAfter.name==toList){
-			console.log(action.data.listAfter);
-			return true;
+			return action.date
 		}else{
-			return false;
+			return null;
 		}
 	};
+	
+	var timeDifference = function(fromTime, toTime){
+		fromTimeDate = new Date(fromTime);
+		toTimeDate = new Date(toTime);
+		diff=Math.round(fromTimeDate - toTimeDate/1000/60/60/24)
+		console.log('dif : '+diff);
+	}
 	
 	var updateLoggedIn = function() {
 		var isLoggedIn = Trello.authorized();
