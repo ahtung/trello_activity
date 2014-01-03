@@ -21,6 +21,8 @@ brew install josegonzalez/php/composer
 - Behat
 ```
 curl http://getcomposer.org/installer | php 
+```
+```
 php composer.phar install --prefer-source
 ```
 
