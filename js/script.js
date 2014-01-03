@@ -7,21 +7,27 @@ $(document).ready(function(e) {
 	
 		Trello.get("cards/"+ card_id +"/actions/",{filter:'updateCard'}, function(actions){
 			
-			$.each(actions,function(key, action){	
-				
-				if(atChangedLists("To Do", "Doing")) {
+			$.each(actions,function(index, action){	
+				if(atChangedLists(action,"To Do", "Doing")) {
 					$("#output").append("-> : "+ action.type + " => date: " + action.date + "<br>");
 				}
 				
-				if(atChangedLists("Doing", "Done")) {
+				if(atChangedLists(action,"Doing", "Done")) {
 					$("#output").append("-> : "+ action.type + " => date: " + action.date + "<br>");
 				}
 			});
 		});
 	};
 	
-	var atChangedLists = function(fromList, toList) {
-		// TODO
+	var atChangedLists = function(action,fromList, toList) {
+		
+		console.log(action);
+		if(action.data.listBefore && action.data.listAfter && action.data.listBefore.name==fromList && action.data.listAfter==toList){
+			console.log(action.data.listAfter);
+			return true;
+		}else{
+			return false;
+		}
 	};
 	
 	var updateLoggedIn = function() {
