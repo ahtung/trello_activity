@@ -10,7 +10,7 @@ $(document).ready(function(e) {
 			$("#output").text('card id:'+card.id);
 		});
 	
-		Trello.get("cards/1mI9G5LR/actions/",{filter:'updateCard'}, function(actions){
+		Trello.get("cards/"+ card_id +"/actions/",{filter:'updateCard'}, function(actions){
 			console.log(actions);
 			$.each(actions,function(key,value){
 				$("#output").append("type : "+value.type+" => date: "+value.date+"<br>");
