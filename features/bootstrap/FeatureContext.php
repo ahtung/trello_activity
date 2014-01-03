@@ -35,13 +35,20 @@ class FeatureContext extends BehatContext
      */
 	public function iHaveACard()
     {
-        throw new PendingException();
+		$card_id = "7BxmX3GG";
+		$card = $this->getCard($card_id);
     }
+	
 	/**
      * @Then /^I should see the correct completion time$/
      */
     public function iShouldSeeTheCorrectCompletionTime2()
     {
-        throw new PendingException();
+		assertEquals($card->completion_time, '0');
     }
+	
+	private function getCard($card_id) {
+		$card = null;
+		return $card;
+	}
 }
