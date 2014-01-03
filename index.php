@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Digital Services – Philips</title>
+<link rel="stylesheet" type="text/css" href="images/style.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="https://api.trello.com/1/client.js?key=fe590d6d0ce9a6826d52b0207afc1a98"></script>
 <script type="text/javascript" src="js/script.js"></script>
@@ -29,7 +30,7 @@
     
     <div id="output"></div>
     
-    http GET "https://api.trello.com/1/boards/4d5ea62fd76aa1136000000c/actions" "since==Apr 1 2013 EDT" "before==May 1 2013 EDT" "limit==1000" "filter==commentCard"
+  
 
 </div>   
 </div>

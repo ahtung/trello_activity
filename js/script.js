@@ -22,10 +22,6 @@ var onAuthorize = function() {
             });  
         });
     });
-	
-    Trello.boards.get("trello-activity", function(board){
-        console.log(board);
-    });
 
 };
 
