@@ -28,8 +28,9 @@ $(document).ready(function(e) {
 	var timeDifference = function(fromTime, toTime){
 		fromTimeDate = new Date(fromTime);
 		toTimeDate = new Date(toTime);
-		diff=Math.round(fromTimeDate - toTimeDate/1000)
-		console.log('dif : '+diff);
+		var timeDiff = Math.abs(toTimeDate.getTime() - fromTimeDate.getTime());
+		var diffDays = Math.ceil(timeDiff / (1000*3600*24));
+		console.log('dif : '+diffDays);
 	}
 	
 	var updateLoggedIn = function() {
