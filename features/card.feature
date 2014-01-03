@@ -4,6 +4,5 @@ Feature: A card
   I need to be able to calculate the completion time of a card
 
   Scenario: Demonstrate card completion time
-    When I visit homepage
-     And I click on 'Connect To Trello'
+   Given I have a card
     Then I should see the correct completion time

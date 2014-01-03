@@ -31,25 +31,16 @@ class FeatureContext extends BehatContext
     }
 
     /**
-     * @When /^I visit homepage$/
+     * @Given /^I have a card$/
      */
-    public function iVisitHomepage()
+	public function iHaveACard()
     {
         throw new PendingException();
     }
-
-    /**
-     * @Given /^I click on \'([^\']*)\'$/
-     */
-    public function iClickOn($arg1)
-    {
-        throw new PendingException();
-    }
-
-    /**
+	/**
      * @Then /^I should see the correct completion time$/
      */
-    public function iShouldSeeTheCorrectCompletionTime()
+    public function iShouldSeeTheCorrectCompletionTime2()
     {
         throw new PendingException();
     }

@@ -1,6 +1,6 @@
 # trello_activity
 
-Bir trello boardunun tum cardlarinin tamamlama suresini hesaplar.
+Bir trello cardinin "To Do" listinden "Doing" listene olan zaman ile "Doing" listinden "Done" olan zmanin farki.
 
 Proje [composer](http://getcomposer.org/) kullaniyor
 Testler icin [Behat](http://behat.org/) kullaniyor
