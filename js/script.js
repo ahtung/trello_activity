@@ -22,7 +22,7 @@ $(document).ready(function(e) {
 	var atChangedLists = function(action,fromList, toList) {
 		
 		console.log(action);
-		if(action.data.listBefore && action.data.listAfter && action.data.listBefore.name==fromList && action.data.listAfter==toList){
+		if(action.data.listBefore && action.data.listAfter && action.data.listBefore.name==fromList && action.data.listAfter.name==toList){
 			console.log(action.data.listAfter);
 			return true;
 		}else{
