@@ -9,10 +9,10 @@ $(document).ready(function(e) {
 			$("#output").text('card id:'+card.id);
 		});
 	
-		Trello.get("cards/1mI9G5LR/actions?type=updateCard", function(card){
-			console.log(card);
-			$.each(card,function(key,value){
-				$("#output").append("type : "+value.type+" => date:"+value.date+"<br>");
+		Trello.get("cards/1mI9G5LR/actions/",{filter:'updateCard'}, function(actions){
+			console.log(actions);
+			$.each(actions,function(key,value){
+				$("#output").append("type : "+value.type+" => date: "+value.date+"<br>");
 			});
 		});
 	};
