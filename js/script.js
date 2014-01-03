@@ -1,27 +1,28 @@
 $(document).ready(function(e) {
     var onAuthorize = function() {
+		
 		updateLoggedIn();
+		
 		$("#output").empty();
 		
 		var card_id = '7BxmX3GG';
 	
 		Trello.get("cards/"+ card_id +"/actions/",{filter:'updateCard'}, function(actions){
-			var difference
+			var difference = 0;
 			$.each(actions,function(index, action){	
 				var start_time = atChangedLists(action,"To Do", "Doing");
 				var end_time = atChangedLists(action,"Doing", "Done");
-				difference = timeDifference(start_time, end_time);
+				if(start_time && end_time) {
+					difference = timeDifference(start_time, end_time);
+				}
 			});
-			$("#output").append("Card  completed in " + difference + " seconds.<br>");
+			$("#output").append("Card " + card_id + " completed in " + difference + " seconds.<br>");
 		});
 	};
 	
 	var atChangedLists = function(action,fromList, toList) {
-		
 		if(action.data.listBefore && action.data.listAfter && action.data.listBefore.name==fromList && action.data.listAfter.name==toList){
 			return action.date
-		}else{
-			return null;
 		}
 	};
 	
@@ -30,7 +31,7 @@ $(document).ready(function(e) {
 		toTimeDate = new Date(toTime);
 		var timeDiff = Math.abs(toTimeDate.getTime() - fromTimeDate.getTime());
 		var diffDays = Math.ceil(timeDiff / (1000*3600*24));
-		console.log('dif : '+diffDays);
+		return diffDays;
 	}
 	
 	var updateLoggedIn = function() {
