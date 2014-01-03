@@ -8,14 +8,10 @@ $(document).ready(function(e) {
 		Trello.get("cards/"+ card_id +"/actions/",{filter:'updateCard'}, function(actions){
 			
 			$.each(actions,function(index, action){	
-				if(atChangedLists(action,"To Do", "Doing")) {
-					$("#output").append("Start Up date: " + action.date + "<br>");
-				}
-				
-				if(atChangedLists(action,"Doing", "Done")) {
-					$("#output").append("Finish date: " + action.date + "<br>");
-				}
-				
+				var start_time = atChangedLists(action,"To Do", "Doing");
+				var end_time = atChangedLists(action,"Doing", "Done");
+				var difference = timeDifference(start_time, end_time);
+				$("#output").append("Card " + action.date + " completed in " + difference + "seconds.<br>");
 			});
 		});
 	};
