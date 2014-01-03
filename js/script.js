@@ -30,7 +30,7 @@ $(document).ready(function(e) {
 		fromTimeDate = new Date(fromTime);
 		toTimeDate = new Date(toTime);
 		var timeDiff = Math.abs(toTimeDate.getTime() - fromTimeDate.getTime());
-		var diffDays = Math.ceil(timeDiff / (1000*3600*24));
+		var diffDays = Math.ceil(timeDiff / (1000));
 		return diffDays;
 	}
 	
