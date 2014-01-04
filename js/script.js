@@ -11,14 +11,17 @@ $(document).ready(function(e) {
 			var difference = 0;
 			var start_time = atChangedLists(actions, "To Do", "Doing");
 			var end_time = atChangedLists(actions, "Doing", "Done");
-			difference = timeDifference(start_time, end_time);
-			$("#output").append("Card " + card_id + " completed in " + difference + " seconds.<br>");
+			console.log("From:"+$(".fromTime").text());
+			console.log("To:"+$(".toTime").text());
+			difference = timeDifference($(".fromTime").text(), $(".toTime").text());
+			$("#output").append("Card \"" + actions[0].data.card.name + "\" completed in " + difference + " minutes.<br>");
 		});
 	};
 	
 	var atChangedLists = function(actions,fromList, toList) {
 		$.each(actions,function(index, action){	
 			if(action.data.listBefore && action.data.listAfter && action.data.listBefore.name==fromList && action.data.listAfter.name==toList){
+				$("#output").append("Card \"" + action.data.card.name + "\" from "+action.data.listBefore.name+" to "+action.data.listAfter.name+" Date : "+(fromList='To Do'&&toList=='Doing'?'<div class="fromTime time">':'<div class="toTime time">')+action.date+"</div><br>");
 				return action.date
 			}
 		});
@@ -28,7 +31,7 @@ $(document).ready(function(e) {
 		fromTimeDate = new Date(fromTime);
 		toTimeDate = new Date(toTime);
 		var timeDiff = Math.abs(toTimeDate.getTime() - fromTimeDate.getTime());
-		var diffDays = Math.ceil(timeDiff / (1000));
+		var diffDays = Math.ceil(timeDiff / (1000*60));
 		return diffDays;
 	}
 	
